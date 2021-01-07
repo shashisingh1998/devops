@@ -8,8 +8,8 @@ pipeline {
 	        stage ('Git Checkout') {
 	            steps {
 	                git branch: 'main',
-			credentialsId: '26d7f9d5-5345-44c9-aa0d-8bc3fbb0aff7',
-			url: 'https://github.com/thesatyammishra/ctcode.git'
+			credentialsId: 'e44fda00-9ca2-439c-aeb9-e2e491c4f02b',
+			url: 'https://github.com/shashisingh1998/code.git'
 	                }
 	            } 
 		stage ('Compile') {
@@ -36,7 +36,7 @@ pipeline {
 		    
                 stage ('Deploy War File') {
                         steps {
-                                sh "cp target/*.war /root/apache-tomcat-9.0.41/webapps/"
+                                sh "cp target/*.war /home/ec2-user/apache-tomcat-8.5.61/webapps"
                         }
                 }
 	}
