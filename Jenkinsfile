@@ -6,7 +6,7 @@ pipeline {
 		parameters {
         	gitParameter name: 'TAG', 
                      		type: 'PT_TAG',
-                     		defaultValue: 'master'
+                     		defaultValue: 'main'
     		}
 	    stages {
 	        stage ('Git Checkout') {
