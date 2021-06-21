@@ -27,16 +27,6 @@ pipeline {
 	                }
 	            }
 		    
-		 stage ('Create war file') {
-	            steps {
-	                sh 'jar -cf target/dependency/webapp-runner.jar target/*.war'
-	                }
-	            }
-		    
-                stage ('Deploy War File') {
-                        steps {
-                                sh "cp target/*.war /home/ec2-user/apache-tomcat-8.5.61/webapps"
-                        }
-                }
+	
 	}
 }
