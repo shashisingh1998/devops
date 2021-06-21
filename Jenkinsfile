@@ -4,7 +4,7 @@ pipeline {
 	        maven 'maven'   
 	        }
 		parameters {
-        	gitParameter name: 'TAG', 
+        	gitParameter name: 'cuteTAG', 
                      		type: 'PT_TAG',
                      		defaultValue: 'main'
     		}
