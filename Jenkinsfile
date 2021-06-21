@@ -3,11 +3,7 @@ pipeline {
 	    tools {
 	        maven 'maven'   
 	        }
-		parameters {
-        	gitParameter name: 'cuteTAG', 
-                     		type: 'PT_TAG',
-                     		defaultValue: 'main'
-    		}
+		
 	    stages {
 	        stage ('Git Checkout') {
 	            steps {
@@ -32,18 +28,7 @@ pipeline {
 	                }
 	            }
 		
-    		stage('Example') {
-            	steps {
-                	checkout([$class: 'GitSCM', 
-                          	branches: [[name: "${params.cuteTAG}"]], 
-                          	doGenerateSubmoduleConfigurations: false, 
-                          	extensions: [], 
-                          	gitTool: 'Default', 
-                          	submoduleCfg: [], 
-                          	userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-parameter-plugin.git']]
-                        	])
-            		}
-        	}
+    		
 	
 	}
 }
