@@ -3,6 +3,11 @@ pipeline {
 	    tools {
 	        maven 'maven'   
 	        }
+		parameters {
+        	gitParameter name: 'TAG', 
+                     		type: 'PT_TAG',
+                     		defaultValue: 'master'
+    		}
 	    stages {
 	        stage ('Git Checkout') {
 	            steps {
@@ -26,7 +31,19 @@ pipeline {
 	                sh 'mvn install'
 	                }
 	            }
-		    
+		
+    		stage('Example') {
+            	steps {
+                	checkout([$class: 'GitSCM', 
+                          	branches: [[name: "${params.TAG}"]], 
+                          	doGenerateSubmoduleConfigurations: false, 
+                          	extensions: [], 
+                          	gitTool: 'Default', 
+                          	submoduleCfg: [], 
+                          	userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-parameter-plugin.git']]
+                        	])
+            		}
+        	}
 	
 	}
 }
